@@ -214,6 +214,3 @@ jobs:
       - name: Push Image
         run: |
           docker image push ${{ steps.vars.outputs.GHCR_IMAGE }}:${{ steps.vars.outputs.IMAGE_TAG }}
-              
-          
-s

@@ -2,12 +2,19 @@ name: python-Pipeline
 
 on:
   workflow_call:
-    SONAR_TOKEN:
-      required: true
-    DOCKERHUB_USERNAME:
-      required: true
-    DOCKERHUB_TOKEN:
-      required: true
+    inputs:
+      python-version:
+        required: false
+        type: string
+        default: "3.12"
+
+    secrets:
+      SONAR_TOKEN:
+        required: true
+      DOCKERHUB_USERNAME:
+        required: true
+      DOCKERHUB_TOKEN:
+        required: true
 ##
 
 
@@ -214,4 +221,3 @@ jobs:
       - name: Push Image
         run: |
           docker image push ${{ steps.vars.outputs.GHCR_IMAGE }}:${{ steps.vars.outputs.IMAGE_TAG }}
-          
